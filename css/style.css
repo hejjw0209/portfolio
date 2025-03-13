@@ -241,6 +241,7 @@ h2 {
 .skill {
     display: flex;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .skill figure img {
@@ -289,15 +290,6 @@ h2 {
 .info-list li.active .btn {
     opacity: 1;
     transform: translateX(0);
-}
-
-.dprocess {
-    padding: 14px;
-    border-radius: 1000px;
-    background: #0a1027;
-    color: #fff;
-    font-size: 20px;
-    /* margin-top: 20px; */
 }
 
 #potfolio {
@@ -375,7 +367,9 @@ h2 {
     background: url(../img/ico-next.svg) no-repeat 50% / contain;
 }
 #potfolio .inner .wrap .swiper-slider-wrap .swiper-button-prev::after,
-#potfolio .inner .wrap .swiper-slider-wrap .swiper-button-next::after {
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-button-next::after,
+.swiper-button-prev:after,
+.swiper-button-next:after {
     display: none;
 }
 
@@ -404,13 +398,43 @@ h2 {
 
 .btn {
     gap: 10px;
+    display: flex;
+    margin-top: 40px;
 }
 .view,
 .process {
     font-size: 20px;
     border-radius: 100px;
     padding: 14px;
+}
+.web .view,
+.web .process {
     background: #b96900;
+}
+.detail .view,
+.detail .process {
+    background: #005c0b;
+}
+.promotion .view,
+.promotion .process {
+    background: #004183;
+}
+
+.illustration .view,
+.illustration .process {
+    background: #b96900;
+}
+
+.dbtn {
+    margin-top: 40px;
+}
+.dview,
+.dprocess {
+    padding: 14px;
+    border-radius: 1000px;
+    background: #0a1027;
+    color: #fff;
+    font-size: 20px;
 }
 
 /* 

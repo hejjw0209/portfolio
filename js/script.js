@@ -15,13 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
         repeat: -1, // 무한 반복
         yoyo: true, // 애니메이션을 앞뒤로 반복
     });
-
-    gsap.to(".app > figure img", {
-        duration: 1.5,
-        ease: "bounce.out",
-        y: 100,
-        scrollTrigger: { trigger: ".app", start: "top 80%", scrub: 1 },
-    });
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -176,7 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
             box.querySelector(".wrap"),
             {
                 autoAlpha: 0,
-                scale: 1.3,
+                scale: 1.2,
             },
             "<"
         );
