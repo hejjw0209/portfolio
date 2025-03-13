@@ -1,0 +1,620 @@
+@charset 'utf-8';
+
+@font-face {
+    font-family: "Cafe24Shiningstar";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Shiningstar.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "PyeongChangPeace-Bold";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/PyeongChangPeace-Bold.woff2")
+        format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+
+:root {
+    --main-color: #1d2235;
+    --sub-color: #ffa500;
+    --sub2-color: #289c35;
+    --sub3-color: #1581f0;
+}
+
+::selection {
+    background: var(--main-color);
+    color: #fff;
+}
+
+* {
+    cursor: url("../img/mouse.png") 2 2, auto;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+body {
+    font: 62.5%/1.5 "Pretendard", sans-serif;
+    background: var(--main-color);
+    color: #fff;
+    word-break: keep-all;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--sub-color);
+}
+
+img {
+    vertical-align: top;
+}
+
+.eye {
+    transform-origin: center;
+    animation: blink 3s infinite;
+    clip-path: inset(0 0 0 0); /* 기본값: 전체 표시 */
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        clip-path: inset(0 0 0 0);
+    } /* 눈을 뜬 상태 */
+    50% {
+        clip-path: inset(30% 0 60% 0);
+    } /* 눈을 감은 상태 (위아래 접힘) */
+}
+/* .inner {
+    position: relative;
+}
+.bg-box {
+    position: absolute;
+    top: 0;
+    background: var(--sub-color);
+    width: 1720px;
+    height: 880px;
+    border-radius: 10px;
+} */
+
+.me {
+    position: fixed;
+    top: -150px;
+    right: -150px;
+    rotate: -130deg;
+    transition: 0.4s;
+    z-index: 10;
+}
+
+.me:hover {
+    position: fixed;
+    top: -260px;
+    right: -260px;
+}
+
+#intro {
+    margin: 0 auto;
+    align-items: center;
+    margin-top: 400px;
+    margin-bottom: 400px;
+}
+.star1 {
+    position: absolute;
+    top: 500px;
+    left: 300px;
+
+    display: block;
+    width: 40px;
+    height: 40px;
+}
+.star2 {
+    position: absolute;
+    top: 300px;
+    right: 400px;
+
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.ex-info b {
+    font-size: 22px;
+    font-weight: 700;
+}
+.ex-info em,
+.about-info em {
+    font-size: 18px;
+}
+
+.indicator {
+    position: fixed;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    z-index: 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.indicator li {
+    position: relative;
+    /* border: 1px solid #000; */
+}
+
+.indicator li a {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: 0.6;
+    transition: 0.4s;
+}
+
+.indicator li.active a {
+    opacity: 1;
+    background: var(--main-color);
+}
+
+.indicator li a b {
+    position: absolute;
+    /* top: 50%;
+    transform: translateY(-50%); */
+    left: 0;
+    font-size: 16px;
+    transition: 0.4s;
+    text-transform: uppercase;
+    color: var(--main-color);
+    font-weight: 700;
+}
+
+.indicator li.active a b {
+    left: 60px;
+}
+
+#intro h1 {
+    font-family: "PyeongChangPeace-Bold";
+    font-size: 100px;
+    color: #fff;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+#intro p {
+    font-family: "Cafe24Shiningstar";
+    font-size: 100px;
+    color: #fff;
+    text-align: center;
+}
+
+h2 {
+    font-family: "PyeongChangPeace-Bold";
+    font-size: 50px;
+    color: #fff;
+}
+#about-me {
+    width: 80%;
+    margin: 0 auto;
+}
+.about-text {
+    display: flex;
+    margin-top: 40px;
+    gap: 100px;
+}
+
+.about-text strong {
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.about-text p {
+    font-weight: 400;
+    font-size: 18px;
+    /* margin-bottom: 4px; */
+    margin-top: 20px;
+}
+
+.about-info p {
+    margin-bottom: 40px;
+}
+.about-info b {
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.skill {
+    display: flex;
+    gap: 10px;
+}
+
+.skill figure img {
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+#potfolio h2 {
+    text-align: center;
+    margin-top: 160px;
+}
+
+.info-list li {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.info-list li p {
+    margin-top: 20px;
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.info-list li .skill {
+    margin-top: 20px;
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.info-list li .btn {
+    margin-top: 20px;
+    transform: translateX(-50px);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+/* 활성화될 때의 효과 */
+
+.info-list li.active p,
+.info-list li.active strong,
+.info-list li.active .skill,
+.info-list li.active .btn {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.dprocess {
+    padding: 14px;
+    border-radius: 1000px;
+    background: #0a1027;
+    color: #fff;
+    font-size: 20px;
+    /* margin-top: 20px; */
+}
+
+#potfolio {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+
+#potfolio .inner {
+    width: 90%;
+    height: 90vh;
+    margin: 100px auto;
+    border-radius: 10px;
+    padding: 100px;
+}
+
+#potfolio .web .inner {
+    background-color: var(--sub-color);
+}
+#potfolio .detail .inner {
+    background-color: var(--sub2-color);
+}
+#potfolio .promotion .inner {
+    background-color: var(--sub3-color);
+}
+#potfolio .illustration .inner {
+    background-color: var(--sub-color);
+}
+
+#potfolio .inner .wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#potfolio .inner .wrap .info {
+    /* background: red; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40%;
+}
+
+#potfolio .inner .wrap .swiper-slider-wrap {
+    /* background: blue; */
+    width: 70%;
+    height: 100%;
+    margin-left: auto;
+    position: relative;
+}
+
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-pagination {
+    bottom: -30px;
+
+    opacity: 3;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--main-color);
+}
+
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-button-prev {
+    width: 60px;
+    height: 60px;
+    left: 0;
+    /* border: 1px solid #f00; */
+    background: url(../img/ico-prev.svg) no-repeat 50% / contain;
+}
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-button-next {
+    width: 60px;
+    height: 60px;
+    right: 0;
+    /* border: 1px solid #f00; */
+    background: url(../img/ico-next.svg) no-repeat 50% / contain;
+}
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-button-prev::after,
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-button-next::after {
+    display: none;
+}
+
+#potfolio .web .inner .wrap .swiper-slider-wrap {
+    width: 80%;
+}
+
+#potfolio .inner .wrap .swiper-slider-wrap .swiper {
+    width: 100%;
+    height: 100%;
+}
+
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-slide {
+    height: 100%;
+}
+
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-slide figure {
+    width: 100%;
+    height: 100%;
+}
+#potfolio .inner .wrap .swiper-slider-wrap .swiper-slide figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.btn {
+    gap: 10px;
+}
+.view,
+.process {
+    font-size: 20px;
+    border-radius: 100px;
+    padding: 14px;
+    background: #b96900;
+}
+
+/* 
+
+.web .inner {
+    background: var(--sub-color);
+    width: 90%;
+    height: 880px;
+
+    margin: 0 auto;
+    border-radius: 10px;
+    position: relative;
+}
+
+.web-slider-wrap {
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.web .inner .wrap .swiper {
+    width: 60%;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translateY(-50%);
+}
+
+.web .swiper-pagination {
+    transform: rotateX(-50%);
+}
+
+.web .swiper-button-prev {
+    position: absolute;
+    left: -40px;
+}
+.web .swiper-button-next {
+    position: absolute;
+    right: 40px;
+}
+
+.detail .inner {
+    background: var(--sub2-color);
+    width: 1720px;
+    height: 860px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 80px;
+    position: relative;
+}
+
+.detail .inner .wrap .swiper {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.detail .swiper-pagination {
+    left: -460px;
+
+    transform: rotateX(-50%);
+}
+
+.promotion .inner {
+    background: var(--sub3-color);
+    width: 1720px;
+    height: 860px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 80px;
+    position: relative;
+}
+
+.promotion .inner .wrap .swiper {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.promotion .swiper-pagination {
+    left: -460px;
+
+    transform: rotateX(-50%);
+}
+
+.illustration .inner {
+    background: var(--sub-color);
+    width: 1720px;
+    height: 860px;
+    margin: 0 auto;
+    border-radius: 10px;
+    margin-top: 80px;
+    position: relative;
+}
+
+.illustration .inner .wrap .swiper {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.illustration .swiper-pagination {
+    left: -460px;
+
+    transform: rotateX(-50%);
+} */
+
+.app {
+    display: flex;
+    gap: 100px;
+    margin: 0 auto;
+    width: 80%;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+
+h3 {
+    font-family: "Cafe24Shiningstar";
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+strong {
+    background: #fff;
+    color: var(--main-color);
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 40px;
+}
+
+.text-info .text p {
+    margin-top: 20px;
+}
+
+.text p {
+    font-size: 24px;
+    font-weight: 700;
+}
+.performence {
+    margin-bottom: 120px;
+}
+.performence .text {
+    text-align: center;
+}
+.performence .text p {
+    margin-top: 20px;
+}
+
+.sns-slider-wrap {
+    margin-top: 60px;
+}
+
+.sns-slider {
+    justify-content: center;
+    align-items: center;
+}
+
+.sns-slider .swiper-slide {
+    transform: scale(0.8);
+    transition: 0.4s;
+}
+.sns-slider .swiper-slide.swiper-slide-active {
+    transform: scale(1);
+}
+
+/* .sns-slider .swiper-pagination {
+    position: absolute;
+    bottom: -5rem;
+} */
+
+.sns-slider figure {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sns-slider figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#footer {
+    background: #fff;
+}
+
+h4 {
+    font-size: 50px;
+    font-family: "PyeongChangPeace-Bold";
+    color: var(--main-color);
+}
+
+#footer p {
+    color: var(--main-color);
+}
+
+.foot-info {
+    padding: 100px 120px;
+}
+
+.foot-info p {
+    font-size: 20px;
+}
