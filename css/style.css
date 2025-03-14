@@ -30,7 +30,7 @@
 }
 
 * {
-    /* cursor: url("../img/mouse.png") 2 2, auto; */
+    cursor: url("../img/mouse.png") 2 2, auto;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -137,6 +137,7 @@ img {
 .ex-info em,
 .about-info em {
     font-size: 18px;
+    margin-top: 20px;
 }
 
 .indicator {
@@ -213,7 +214,7 @@ h2 {
 }
 .about-text {
     display: flex;
-    margin-top: 40px;
+    margin-top: 60px;
     gap: 100px;
 }
 
@@ -226,16 +227,16 @@ h2 {
     font-weight: 400;
     font-size: 18px;
     /* margin-bottom: 4px; */
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .about-info p {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 .about-info b {
     font-weight: 400;
     font-size: 18px;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .skill {
