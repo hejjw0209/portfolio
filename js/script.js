@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
             defaults: { duration: 1, ease: "power2.out()" },
             scrollTrigger: {
                 trigger: box,
-                start: "top 30%",
+                start: "top 15%",
                 end: "bottom 0%",
                 // markers: true,
                 pin: true,

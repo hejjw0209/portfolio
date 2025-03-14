@@ -30,7 +30,7 @@
 }
 
 * {
-    cursor: url("../img/mouse.png") 2 2, auto;
+    /* cursor: url("../img/mouse.png") 2 2, auto; */
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -280,6 +280,8 @@ h2 {
     transform: translateX(-50px);
     opacity: 0;
     transition: 0.4s;
+    pointer-events: none;
+    user-select: none;
 }
 
 /* 활성화될 때의 효과 */
@@ -290,6 +292,8 @@ h2 {
 .info-list li.active .btn {
     opacity: 1;
     transform: translateX(0);
+    pointer-events: initial;
+    user-select: initial;
 }
 
 #potfolio {
@@ -393,10 +397,12 @@ h2 {
     object-fit: contain;
 }
 
+/* 스와이퍼 버튼 영역 */
 .btn {
     gap: 10px;
     display: flex;
     margin-top: 40px;
+    position: absolute;
 }
 .view,
 .process {
