@@ -132,8 +132,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const snsSlider = new Swiper(".sns-slider", {
         loop: true,
         autoplay: true,
-        slidesPerView: 3,
-        centeredSlides: true,
+        slidesPerView: 5,
+        // centeredSlides: true,
         spaceBetween: 10,
         // pagination: {
         //     el: ".sns-slider .swiper-pagination",
@@ -197,18 +197,19 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
-    // gsap.to(char, {
-    //     x: -300,
-    //     y: 0,
-    //     rotation: 0,
+    gsap.to(char, {
+        x: -300,
+        y: 0,
+        rotation: 0,
 
-    //     scrollTrigger: {
-    //         trigger: "#footer",
-    //         markers: true,
-    //         start: "top 80%",
-    //         // toggleActions: "play none reverse none",
-    //     },
-    // });
+        scrollTrigger: {
+            trigger: "#footer",
+            // markers: true,
+            start: "top 80%",
+            toggleActions: "play none none reverse ",
+            toggleClass: { targets: ".character", className: "active" },
+        },
+    });
 
     const star1 = document.querySelector(".star1");
 

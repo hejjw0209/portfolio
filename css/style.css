@@ -66,8 +66,8 @@ img {
 .character {
     position: fixed;
     width: 30%;
-    bottom: -130px;
-    right: -130px;
+    bottom: -150px;
+    right: -150px;
     rotate: -45deg;
     z-index: 10;
 }
@@ -467,8 +467,9 @@ h2 {
 #potfolio h3,
 .performence h3 {
     font-family: "Cafe24Shiningstar";
-    margin-bottom: 20px;
+
     font-size: 30px;
+    line-height: 1;
 }
 
 #potfolio strong {
@@ -480,11 +481,8 @@ h2 {
     margin-top: 40px;
 }
 
-.text-info .text p {
-    margin-top: 20px;
-}
-
 .text p {
+    margin-top: 10px;
     font-size: 34px;
     font-weight: 700;
 }
@@ -507,13 +505,13 @@ h2 {
     align-items: center;
 }
 
-.sns-slider .swiper-slide {
+/* .sns-slider .swiper-slide {
     transform: scale(0.8);
     transition: 0.4s;
 }
 .sns-slider .swiper-slide.swiper-slide-active {
     transform: scale(1);
-}
+} */
 
 /* .sns-slider .swiper-pagination {
     position: absolute;
