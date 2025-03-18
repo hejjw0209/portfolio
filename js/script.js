@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         autoplay: true,
         slidesPerView: 5,
         // centeredSlides: true,
-        spaceBetween: 10,
+        spaceBetween: 20,
         // pagination: {
         //     el: ".sns-slider .swiper-pagination",
         //     clickable: true, // 클릭가능
@@ -197,19 +197,23 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
-    gsap.to(char, {
-        x: -300,
-        y: 0,
-        rotation: 0,
-
+    gsap.timeline({
         scrollTrigger: {
             trigger: "#footer",
             // markers: true,
-            start: "top 80%",
-            toggleActions: "play none none reverse ",
+            start: "top 70%",
+            // pin: true,
+            toggleActions: "play none none reverse",
             toggleClass: { targets: ".character", className: "active" },
         },
-    });
+    })
+        .to(char, {
+            xPercent: -100,
+            rotation: 0,
+        })
+        .to(".foot-info h4", { x: 400 }, "<")
+        .to(".foot-info p:first-child", { x: 400 }, "-=0.3")
+        .to(".foot-info p:last-child", { x: 400 }, "-=0.3");
 
     const star1 = document.querySelector(".star1");
 
