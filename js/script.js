@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
         scrollTrigger: {
             trigger: "#footer",
             // markers: true,
-            start: "top 70%",
+            start: "top 80%",
             // pin: true,
             toggleActions: "play none none reverse",
             toggleClass: { targets: ".character", className: "active" },
