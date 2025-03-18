@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // 글자만 자르고 끝!
     const text = new SplitType(title1, { types: "chars" });
-    console.log(text.chars);
+    // console.log(text.chars);
 
     gsap.from(text.chars, {
         y: 50,
@@ -15,9 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
         repeat: -1, // 무한 반복
         yoyo: true, // 애니메이션을 앞뒤로 반복
     });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
     const webSlider = new Swiper(".web-slider", {
         loop: true,
         // autoplay: true,
@@ -145,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // #potfolio .inner
     const portfolioBoxes = gsap.utils.toArray("#potfolio .inner");
-    console.log(portfolioBoxes);
+    // console.log(portfolioBoxes);
 
     portfolioBoxes.forEach((box, index) => {
         const tl = gsap.timeline({
@@ -156,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 end: "bottom 0%",
                 // markers: true,
                 pin: true,
-                toggleActions: "play none reverse none",
+                // toggleActions: "play none reverse none",
             },
         });
         tl.from(box, {
@@ -175,58 +173,42 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     });
 
-    // 초기화
-    $("#fullpage").fullpage({
-        // 인디케이터 커스텀
+    const char = document.querySelector(".character");
+    // const hair = document.querySelector(".hair2");
 
-        // 1. 사용할 요소의 이름을 지정
-        menu: ".indicator",
+    let isMoved = false; // 이동 여부를 저장하는 변수
 
-        // 2. 앵커(영역)의 이름을 설정
-        anchors: ["section1", "section2", "section3", "section4", "section5", "section6"],
-
-        // 3. 실제 사용될 링크에 data-menuanchor="영역이름" 적용
-
-        // * 속도 조절
-        scrollingSpeed: 1000,
-
-        // * 섹션 영역에서 콘텐츠 세로 정렬(상단 기준)
-        verticalCentered: false,
-
-        // * 슬라이더 관련 설정
-        slidesNavigation: true,
-
-        // 영역에 진입한 후
-        afterLoad: function (anchorLink, index) {
-            console.log("영역에 진입한 후 : " + anchorLink, index);
-
-            // section4 영역에 진입하면 탑버튼이 보이게
-            if (anchorLink === "section5") $btnTop.fadeIn();
-
-            // 초기화
-            AOS.init();
-            // console.log($aniEl);
-            $aniEl.addClass("aos-animate");
-        },
-
-        // 영역을 떠나갈 때
-        onLeave: function (index, nextIndex, direction) {
-            console.log("영역을 떠나갈 때 : " + index, nextIndex, direction);
-
-            //section4 영역을 떠나거나 휠을 올렸을 때
-
-            if (direction === "up") $btnTop.fadeOut();
-
-            if (direction === "down") {
-                $header.addClass("hide");
-            } else {
-                $header.removeClass("hide");
-            }
-
-            // aos-animate 클래스가 없으면 애니메이션 동작 X
-            $aniEl.removeClass("aos-animate");
-        },
+    char.addEventListener("click", () => {
+        if (!isMoved) {
+            gsap.to(char, { x: 200, y: 200, rotation: -45 });
+        } else {
+            gsap.to(char, { x: 0, y: 0, rotation: -45 });
+        }
+        setTimeout(shaking, 800);
+        isMoved = !isMoved; // 상태 변경
     });
+
+    shaking();
+
+    function shaking() {
+        char.classList.add("active");
+        setTimeout(() => {
+            char.classList.remove("active");
+        }, 1000);
+    }
+
+    // gsap.to(char, {
+    //     x: -300,
+    //     y: 0,
+    //     rotation: 0,
+
+    //     scrollTrigger: {
+    //         trigger: "#footer",
+    //         markers: true,
+    //         start: "top 80%",
+    //         // toggleActions: "play none reverse none",
+    //     },
+    // });
 
     const star1 = document.querySelector(".star1");
 

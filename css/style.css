@@ -63,7 +63,16 @@ img {
     vertical-align: top;
 }
 
-.eye {
+.character {
+    position: fixed;
+    width: 30%;
+    bottom: -130px;
+    right: -130px;
+    rotate: -45deg;
+    z-index: 10;
+}
+
+.eye2 {
     transform-origin: center;
     animation: blink 3s infinite;
     clip-path: inset(0 0 0 0); /* 기본값: 전체 표시 */
@@ -78,31 +87,32 @@ img {
         clip-path: inset(30% 0 60% 0);
     } /* 눈을 감은 상태 (위아래 접힘) */
 }
-/* .inner {
-    position: relative;
-}
-.bg-box {
-    position: absolute;
-    top: 0;
-    background: var(--sub-color);
-    width: 1720px;
-    height: 880px;
-    border-radius: 10px;
-} */
 
-.me {
-    position: fixed;
-    top: -150px;
-    right: -150px;
-    rotate: -130deg;
-    transition: 0.4s;
-    z-index: 10;
+.character.active .hair2 {
+    animation: wobble-hor-top 0.8s both;
 }
 
-.me:hover {
-    position: fixed;
-    top: -260px;
-    right: -260px;
+@keyframes wobble-hor-top {
+    0%,
+    100% {
+        transform: translateX(0%);
+        transform-origin: 50% 50%;
+    }
+    15% {
+        transform: translateX(-30px) rotate(6deg);
+    }
+    30% {
+        transform: translateX(15px) rotate(-6deg);
+    }
+    45% {
+        transform: translateX(-15px) rotate(3.6deg);
+    }
+    60% {
+        transform: translateX(9px) rotate(-2.4deg);
+    }
+    75% {
+        transform: translateX(-6px) rotate(1.2deg);
+    }
 }
 
 #intro {
@@ -130,14 +140,77 @@ img {
     height: 20px;
 }
 
-.ex-info b {
-    font-size: 22px;
-    font-weight: 700;
+.about-text {
+    display: flex;
+    margin-top: 60px;
+    justify-content: space-between;
 }
-.ex-info em,
-.about-info em {
+
+.about-info {
+    /* border: 1px solid #000; */
+    width: 35%;
+}
+
+.about-info dt,
+.ex-info dt {
+    background: #fff;
+    color: var(--main-color);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 18px;
+    line-height: 1;
+    width: fit-content;
+    /* min-width: 145px;
+    text-align: center; */
+}
+
+.about-info dt:not(:first-child) {
+    margin-top: 40px;
+}
+
+.about-info dd {
+    font-size: 18px;
+    margin-top: 14px;
+}
+
+.about-info .skills,
+.skill {
+    display: flex;
+    gap: 10px;
+}
+
+.about-info .skills li,
+.skill img {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ex-info {
+    width: 60%;
+}
+
+.ex-info dd {
     margin-top: 20px;
+    font-size: 18px;
+    margin-top: 14px;
+}
+
+.ex-info .ex-list li {
+    /* border: 1px solid #f00; */
+    margin-bottom: 20px;
+}
+
+.ex-info .ex-list li strong {
+}
+.ex-info .ex-list li h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+.ex-info .ex-list li p {
+    margin-top: 10px;
 }
 
 .indicator {
@@ -150,42 +223,6 @@ img {
     display: flex;
     flex-direction: column;
     gap: 24px;
-}
-
-.indicator li {
-    position: relative;
-    /* border: 1px solid #000; */
-}
-
-.indicator li a {
-    display: block;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: #fff;
-    opacity: 0.6;
-    transition: 0.4s;
-}
-
-.indicator li.active a {
-    opacity: 1;
-    background: var(--main-color);
-}
-
-.indicator li a b {
-    position: absolute;
-    /* top: 50%;
-    transform: translateY(-50%); */
-    left: 0;
-    font-size: 16px;
-    transition: 0.4s;
-    text-transform: uppercase;
-    color: var(--main-color);
-    font-weight: 700;
-}
-
-.indicator li.active a b {
-    left: 60px;
 }
 
 #intro h1 {
@@ -212,43 +249,6 @@ h2 {
     width: 80%;
     margin: 0 auto;
 }
-.about-text {
-    display: flex;
-    margin-top: 60px;
-    gap: 100px;
-}
-
-.about-text strong {
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.about-text p {
-    font-weight: 400;
-    font-size: 18px;
-    /* margin-bottom: 4px; */
-    margin-top: 30px;
-}
-
-.about-info p {
-    margin-bottom: 60px;
-}
-.about-info b {
-    font-weight: 400;
-    font-size: 18px;
-    margin-bottom: 60px;
-}
-
-.skill {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.skill figure img {
-    border: 1px solid #fff;
-    border-radius: 10px;
-}
 
 #potfolio h2 {
     text-align: center;
@@ -274,6 +274,12 @@ h2 {
     transform: translateX(-50px);
     opacity: 0;
     transition: 0.4s;
+
+    border-radius: 10px;
+    overflow: hidden;
+
+    display: flex;
+    gap: 10px;
 }
 
 .info-list li .btn {
@@ -407,9 +413,10 @@ h2 {
 }
 .view,
 .process {
-    font-size: 20px;
+    font-size: 16px;
     border-radius: 100px;
-    padding: 14px;
+    padding: 10px 20px;
+    margin-top: 30px;
 }
 .web .view,
 .web .process {
@@ -435,120 +442,14 @@ h2 {
 }
 .dview,
 .dprocess {
-    padding: 14px;
+    padding: 10px 20px;
     border-radius: 1000px;
     background: #0a1027;
     color: #fff;
-    font-size: 20px;
+    gap: 10px;
+    font-size: 16px;
+    margin-top: 30px;
 }
-
-/* 
-
-.web .inner {
-    background: var(--sub-color);
-    width: 90%;
-    height: 880px;
-
-    margin: 0 auto;
-    border-radius: 10px;
-    position: relative;
-}
-
-.web-slider-wrap {
-    margin: 0 auto;
-    align-items: center;
-    justify-content: center;
-}
-
-.web .inner .wrap .swiper {
-    width: 60%;
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    transform: translateY(-50%);
-}
-
-.web .swiper-pagination {
-    transform: rotateX(-50%);
-}
-
-.web .swiper-button-prev {
-    position: absolute;
-    left: -40px;
-}
-.web .swiper-button-next {
-    position: absolute;
-    right: 40px;
-}
-
-.detail .inner {
-    background: var(--sub2-color);
-    width: 1720px;
-    height: 860px;
-    margin: 0 auto;
-    border-radius: 10px;
-    margin-top: 80px;
-    position: relative;
-}
-
-.detail .inner .wrap .swiper {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.detail .swiper-pagination {
-    left: -460px;
-
-    transform: rotateX(-50%);
-}
-
-.promotion .inner {
-    background: var(--sub3-color);
-    width: 1720px;
-    height: 860px;
-    margin: 0 auto;
-    border-radius: 10px;
-    margin-top: 80px;
-    position: relative;
-}
-
-.promotion .inner .wrap .swiper {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.promotion .swiper-pagination {
-    left: -460px;
-
-    transform: rotateX(-50%);
-}
-
-.illustration .inner {
-    background: var(--sub-color);
-    width: 1720px;
-    height: 860px;
-    margin: 0 auto;
-    border-radius: 10px;
-    margin-top: 80px;
-    position: relative;
-}
-
-.illustration .inner .wrap .swiper {
-    width: 100%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.illustration .swiper-pagination {
-    left: -460px;
-
-    transform: rotateX(-50%);
-} */
 
 .app {
     display: flex;
@@ -559,13 +460,18 @@ h2 {
     margin-bottom: 60px;
 }
 
-h3 {
+.app .skill figure {
+    margin-top: 20px;
+}
+
+#potfolio h3,
+.performence h3 {
     font-family: "Cafe24Shiningstar";
     margin-bottom: 20px;
     font-size: 30px;
 }
 
-strong {
+#potfolio strong {
     background: #fff;
     color: var(--main-color);
     padding: 10px;
@@ -579,7 +485,7 @@ strong {
 }
 
 .text p {
-    font-size: 24px;
+    font-size: 34px;
     font-weight: 700;
 }
 .performence {
@@ -646,4 +552,11 @@ h4 {
 
 .foot-info p {
     font-size: 20px;
+}
+
+.me-cha {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
 }
