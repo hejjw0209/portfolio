@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
         loop: true,
         autoplay: true,
         slidesPerView: 5,
-        // centeredSlides: true,
+        centeredSlides: true,
         spaceBetween: 20,
         // pagination: {
         //     el: ".sns-slider .swiper-pagination",
@@ -174,21 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     const char = document.querySelector(".character");
-    // const hair = document.querySelector(".hair2");
-
-    let isMoved = false; // 이동 여부를 저장하는 변수
-
-    char.addEventListener("click", () => {
-        if (!isMoved) {
-            gsap.to(char, { x: 200, y: 200, rotation: -45 });
-        } else {
-            gsap.to(char, { x: 0, y: 0, rotation: -45 });
-        }
-        setTimeout(shaking, 800);
-        isMoved = !isMoved; // 상태 변경
-    });
-
-    shaking();
 
     function shaking() {
         char.classList.add("active");
@@ -197,20 +182,77 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 1000);
     }
 
+    // 초기 상태 설정
+    stand(); // 처음 로딩될 때 show 상태
+
+    // 클릭 이벤트
+    let isMoved = false;
+    char.addEventListener("click", () => {
+        if (!isMoved) {
+            hide(); // 클릭하면 hide 상태
+        } else {
+            show(); // 다시 클릭하면 show 상태
+        }
+        isMoved = !isMoved;
+    });
+
+    function hide() {
+        gsap.to(char, {
+            xPercent: 20,
+            y: 200,
+            rotation: -45,
+            duration: 1,
+            ease: "elastic.out(1, 0.6)",
+        });
+
+        shaking();
+    }
+    function show() {
+        gsap.to(char, {
+            xPercent: 0,
+            y: 0,
+            rotation: -45,
+            duration: 1,
+            ease: "elastic.out(1, 0.6)",
+        });
+
+        shaking();
+    }
+
+    function stand() {
+        gsap.to(char, {
+            xPercent: -120,
+            rotation: 0,
+            duration: 1,
+            ease: "elastic.out(1, 0.6)",
+        });
+
+        shaking();
+    }
+
+    // 스크롤 트리거와 함께 stand 동작
+    gsap.to(char, {
+        scrollTrigger: {
+            trigger: char,
+            start: "bottom 100%",
+            end: "bottom 50%",
+            // markers: true,
+            onEnter: () => show(),
+            onEnterBack: () => stand(),
+        },
+    });
+
     gsap.timeline({
         scrollTrigger: {
             trigger: "#footer",
             // markers: true,
-            start: "top 80%",
-            // pin: true,
-            toggleActions: "play none none reverse",
-            toggleClass: { targets: ".character", className: "active" },
+            start: "top 70%",
+            onEnter: () => stand(), // footer에 도달하면 stand 상태
+            onLeaveBack: () => show(), // footer를 벗어나면 다시 show 상태
+
+            toggleActions: "play none reverse reverse",
         },
     })
-        .to(char, {
-            xPercent: -100,
-            rotation: 0,
-        })
         .to(".foot-info h4", { x: 400 }, "<")
         .to(".foot-info p:first-child", { x: 400 }, "-=0.3")
         .to(".foot-info p:last-child", { x: 400 }, "-=0.3");
